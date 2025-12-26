@@ -3,162 +3,245 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Café Near Me | Santoshpur's Gourmet Revolution</title>
+    <title>Café Near Me | Retro-Gourmet Revolution</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Montserrat:wght@300;400;700&family=Bungee+Shade&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --deep-espresso: #2D1B10;
-            --rich-mocha: #4E3629;
-            --golden-tan: #C2A382;
-            --soft-cream: #FDF5E6;
-            --white: #FFFFFF;
+            --vintage-cream: #FDF5E6;
+            --deep-walnut: #3D2B1F;
+            --retro-gold: #D4AF37;
+            --neon-accent: #FF5E5E;
+            --bakery-pink: #F4DADA;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
+        * { box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        body { font-family: 'Segoe UI', Roboto, sans-serif; margin: 0; background: var(--soft-cream); color: var(--deep-espresso); line-height: 1.7; }
+        
+        body { 
+            font-family: 'Montserrat', sans-serif; 
+            margin: 0; 
+            background: var(--vintage-cream); 
+            color: var(--deep-walnut); 
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-        /* Navigation */
+        /* --- Transitions & Animations --- */
+        .reveal { opacity: 0; transform: translateY(30px); transition: var(--transition); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* --- Navigation --- */
         nav { 
-            background: var(--deep-espresso); 
-            color: var(--white); 
-            padding: 1rem 5%; 
+            background: rgba(61, 43, 31, 0.95); 
+            backdrop-filter: blur(10px);
+            color: white; 
+            padding: 1rem 8%; 
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
             position: sticky; 
             top: 0; 
             z-index: 1000;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            border-bottom: 3px solid var(--retro-gold);
         }
-        .logo-name { font-weight: 900; font-size: 1.6rem; letter-spacing: 2px; color: var(--golden-tan); }
-        .wa-top { background: #25D366; color: white; padding: 8px 18px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 0.9rem; }
+        .logo { font-family: 'Bungee Shade', cursive; font-size: 1.8rem; color: var(--retro-gold); letter-spacing: 2px; }
+        .wa-btn { background: #25D366; color: white; padding: 10px 20px; border-radius: 4px; text-decoration: none; font-weight: bold; transition: var(--transition); border: 2px solid transparent; }
+        .wa-btn:hover { background: transparent; border-color: #25D366; color: #25D366; }
 
-        /* Hero Section */
+        /* --- Hero Section --- */
         header {
-            background: linear-gradient(rgba(45, 27, 16, 0.85), rgba(45, 27, 16, 0.85)), url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1350&q=80');
-            background-size: cover; background-position: center; height: 70vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: var(--white); padding: 0 20px;
+            height: 90vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1517433670267-08bbd4be890f?auto=format&fit=crop&w=1500&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
         }
-        h1 { font-size: clamp(2.5rem, 6vw, 4rem); margin: 0; font-weight: 800; }
-        .hero-sub { font-size: 1.3rem; color: var(--golden-tan); margin-top: 10px; max-width: 700px; }
-        .price-tag { background: var(--golden-tan); color: var(--deep-espresso); padding: 12px 40px; border-radius: 50px; font-weight: 900; font-size: 1.7rem; margin-top: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
 
-        /* About Section */
-        section { padding: 80px 10%; max-width: 1200px; margin: 0 auto; }
-        h2 { text-align: center; font-size: 2.5rem; color: var(--rich-mocha); margin-bottom: 50px; position: relative; }
-        h2::after { content: ''; width: 60px; height: 4px; background: var(--golden-tan); position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); }
+        header h1 { 
+            font-family: 'Playfair Display', serif; 
+            font-size: clamp(3rem, 10vw, 6rem); 
+            margin: 0; 
+            text-shadow: 4px 4px var(--deep-walnut);
+        }
 
-        .founders-box { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
-        .founder-card { background: var(--white); padding: 40px; border-radius: 20px; border-bottom: 5px solid var(--golden-tan); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        .founder-card h3 { color: var(--rich-mocha); font-size: 1.8rem; margin-top: 0; }
+        .hero-sub { font-size: 1.5rem; margin: 20px 0; max-width: 800px; font-weight: 300; }
+        .price-sticker { 
+            background: var(--neon-accent); 
+            padding: 15px 40px; 
+            font-size: 2rem; 
+            font-weight: 900; 
+            transform: rotate(-3deg); 
+            box-shadow: 5px 5px 0 var(--deep-walnut);
+            border: 2px solid white;
+        }
 
-        /* Why Different */
-        .difference-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 40px; }
-        .diff-item { background: var(--rich-mocha); color: var(--white); padding: 30px; border-radius: 15px; text-align: center; }
+        /* --- Sections --- */
+        section { padding: 100px 10%; }
+        h2 { font-family: 'Playfair Display', serif; font-size: 3rem; text-align: center; margin-bottom: 60px; color: var(--deep-walnut); }
 
-        /* Menu */
-        .menu-section { background: var(--white); padding: 60px 5%; border-radius: 30px; margin: 50px 0; }
-        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-        .food-item { border-left: 4px solid var(--golden-tan); padding-left: 20px; }
-        .food-item h4 { margin-bottom: 5px; font-size: 1.3rem; color: var(--rich-mocha); }
-        .food-item p { margin: 0; font-size: 0.95rem; opacity: 0.8; }
+        /* --- The Masterminds --- */
+        .founders-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
+        .card { 
+            background: white; 
+            padding: 40px; 
+            border: 1px solid #ddd;
+            position: relative;
+            transition: var(--transition);
+            box-shadow: 15px 15px 0 var(--bakery-pink);
+        }
+        .card:hover { transform: translate(-5px, -5px); box-shadow: 25px 25px 0 var(--retro-gold); }
+        .card h3 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 10px; border-bottom: 2px solid var(--retro-gold); display: inline-block; }
+        .role { color: var(--neon-accent); font-weight: bold; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 15px; }
 
-        /* Contact/Footer */
-        .wa-final { background: #25D366; color: white; padding: 20px 50px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.4rem; display: inline-block; margin: 40px 0; transition: 0.3s; box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3); }
-        .wa-final:hover { transform: scale(1.05); }
-        footer { background: var(--deep-espresso); color: var(--white); text-align: center; padding: 60px 10%; }
+        /* --- Retro Menu --- */
+        .menu-board { 
+            background: var(--deep-walnut); 
+            color: var(--vintage-cream); 
+            padding: 60px; 
+            border-radius: 10px;
+            box-shadow: inset 0 0 100px rgba(0,0,0,0.5);
+            border: 8px double var(--retro-gold);
+        }
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; }
+        .menu-item { border-bottom: 1px dashed rgba(253, 245, 230, 0.3); padding-bottom: 20px; transition: var(--transition); }
+        .menu-item:hover { transform: scale(1.02); }
+        .menu-item h4 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--retro-gold); margin: 0; }
+        .menu-item p { font-size: 0.9rem; font-style: italic; opacity: 0.8; }
+        
+        /* New Highlight Style for Brownies */
+        .new-arrival { 
+            border: 1px solid var(--retro-gold); 
+            padding: 15px; 
+            background: rgba(212, 175, 55, 0.1); 
+            position: relative;
+        }
+        .badge { 
+            position: absolute; 
+            top: -10px; 
+            right: -10px; 
+            background: var(--neon-accent); 
+            color: white; 
+            font-size: 0.7rem; 
+            padding: 2px 8px; 
+            font-weight: bold; 
+            transform: rotate(15deg); 
+        }
+
+        .coming-soon-text { 
+            text-align: center; 
+            margin-top: 50px; 
+            font-family: 'Playfair Display', serif; 
+            font-style: italic; 
+            color: var(--retro-gold); 
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+        }
+
+        /* --- Footer --- */
+        footer { background: var(--deep-walnut); color: white; text-align: center; padding: 80px 10%; }
+        .footer-logo { font-family: 'Bungee Shade', cursive; font-size: 2.5rem; margin-bottom: 20px; color: var(--retro-gold); }
+
+        @media (max-width: 768px) {
+            section { padding: 60px 5%; }
+            .menu-board { padding: 30px; }
+        }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo-name">CAFÉ NEAR ME</div>
-        <a href="https://wa.me/message/YOPYLKGEOX24I1" class="wa-top"><i class="fab fa-whatsapp"></i> Chat Now</a>
+        <div class="logo">CNM</div>
+        <a href="https://wa.me/message/YOPYLKGEOX24I1" class="wa-btn"><i class="fab fa-whatsapp"></i> ORDER NOW</a>
     </nav>
 
     <header>
-        <h1>Baking & Breakfast Reimagined</h1>
-        <p class="hero-sub">The tastiest budget-gourmet experience in the nation, tailored for Gen Z and Millennials.</p>
-        <div class="price-badge">₹99 — ₹199</div>
+        <h1 class="reveal">CAFÉ NEAR ME</h1>
+        <p class="hero-sub reveal">Santoshpur's Gourmet Revolution. High-end taste, neighborhood prices.</p>
+        <div class="price-sticker reveal">₹99 — ₹199</div>
     </header>
 
-    <section>
-        <h2>The Masterminds</h2>
-        <div class="founders-box">
-            <div class="founder-card">
+    <section id="artisans">
+        <h2 class="reveal">The Artisans</h2>
+        <div class="founders-container">
+            <div class="card reveal">
+                <span class="role">Chef & Digital Strategist</span>
                 <h3>Shayak Kumar Das</h3>
-                <p><strong>Chef & Digital Strategist</strong></p>
-                <p>Shayak is a powerhouse of digital marketing and culinary innovation. Having successfully scaled major national brands like <strong>AstroTalk</strong> and <strong>Habibs</strong>, he brings a data-driven approach to flavor. His journey through the kitchens of <strong>Kalighata</strong> has mastered the art of "Premium Indian Fusion".</p>
+                <p>A powerhouse of culinary precision. Shayak honed his craft in the prestigious kitchens of <strong>Hyatt</strong>, <strong>Krystal School of Excellence</strong>, and <strong>Wise Owl</strong>. He combines professional hospitality standards with the digital expertise used to scale brands like <strong>AstroTalk</strong> and <strong>Habibs</strong>.</p>
             </div>
-            <div class="founder-card">
+
+            <div class="card reveal">
+                <span class="role">Professional Baker</span>
                 <h3>Aindrila Chakraborty</h3>
-                <p><strong>Professional Baker & Strategist</strong></p>
-                <p>Aindrila is the artistic architect behind our signature doughs and pastries. With a background in professional baking and brand strategy, she ensures that every sandwich, bun, and dessert meets international gourmet standards while remaining locally accessible.</p>
+                <p>The architect of our signature textures. Aindrila is a professional pastry expert who transforms premium ingredients into artisanal masterpieces. From 24-hour fermented doughs to world-class desserts, she ensures every bite is a gourmet experience.</p>
             </div>
         </div>
     </section>
 
-    <section style="background: rgba(194, 163, 130, 0.1); border-radius: 40px;">
-        <h2>Why We Are Different</h2>
-        <p style="text-align: center; max-width: 800px; margin: 0 auto 40px;">Kolkata is full of cafés, but we are a revolution. We've stripped away the "luxury markup" to give you world-class taste at street prices.</p>
-        <div class="difference-grid">
-            <div class="diff-item">
-                <i class="fas fa-wallet fa-2x" style="color: var(--golden-tan); margin-bottom: 15px;"></i>
-                <h4>Budget Friendly</h4>
-                <p>Gourmet quality that doesn't hurt your wallet. Everything is capped at ₹99 or ₹199.</p>
-            </div>
-            <div class="diff-item">
-                <i class="fas fa-utensils fa-2x" style="color: var(--golden-tan); margin-bottom: 15px;"></i>
-                <h4>Nation-Best Taste</h4>
-                <p>Voted the tastiest fusion menu, blending traditional Indian soul with modern Gen Z aesthetics.</p>
-            </div>
-            <div class="diff-item">
-                <i class="fas fa-music fa-2x" style="color: var(--golden-tan); margin-bottom: 15px;"></i>
-                <h4>The Vibe</h4>
-                <p>Artisanal smoking zones, curated premium music, and a brownish aesthetic built for your Instagram feed.</p>
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <div class="menu-section">
-            <h2>Our Signature Offerings</h2>
+    <section style="background: var(--bakery-pink);">
+        <h2 class="reveal">The Menu Board</h2>
+        <div class="menu-board reveal">
             <div class="menu-grid">
-                <div class="food-item">
+                <div class="menu-item">
                     <h4>Artisanal Sandwiches</h4>
-                    <p>Hand-crafted fillings with Aindrila's signature freshly baked bread.</p>
+                    <p>Using Aindrila's 24-hour fermented bread.</p>
                 </div>
-                <div class="food-item">
-                    <h4>French Cuisine Burgers</h4>
-                    <p>Premium patties and gourmet sauces inspired by classic French techniques.</p>
+                <div class="menu-item">
+                    <h4>French Burgers</h4>
+                    <p>Chef Shayak’s signature fusion patties.</p>
                 </div>
-                <div class="food-item">
+                <div class="menu-item">
+                    <h4>Gourmet Alur Dom</h4>
+                    <p>A heritage classic with a Hyatt-style plating.</p>
+                </div>
+                <div class="menu-item">
                     <h4>Signature Lattes</h4>
-                    <p>Barista-grade coffee at a fraction of the usual price.</p>
+                    <p>Barista-grade beans, street-grade prices.</p>
                 </div>
-                <div class="food-item">
-                    <h4>Gourmet Kachori Alur Dom</h4>
-                    <p>The Kolkata classic, reimagined for the modern foodie.</p>
+                <div class="menu-item new-arrival">
+                    <div class="badge">MUST TRY</div>
+                    <h4>Signature Brownies</h4>
+                    <p>Rich, fudgy, and decadent. Like never tasted before.</p>
                 </div>
             </div>
-        </div>
-
-        <div style="text-align: center;">
-            <h2>Taste the Revolution</h2>
-            <p>Visit us in Santoshpur, Kolkata or order directly.</p>
-            <a href="https://wa.me/message/YOPYLKGEOX24I1" class="wa-final">
-                <i class="fab fa-whatsapp"></i> Chat & Order on WhatsApp
-            </a>
+            <div class="coming-soon-text">
+                <i class="fas fa-ellipsis-h"></i> MANY MORE MENUS COMING SOON <i class="fas fa-ellipsis-h"></i>
+            </div>
         </div>
     </section>
 
     <footer>
-        <div class="logo-name" style="margin-bottom: 20px;">CAFÉ NEAR ME</div>
+        <div class="footer-logo">CAFÉ NEAR ME</div>
         <p>A Shayak & Aindrila Venture</p>
-        <p>Santoshpur, Kolkata | Premium Taste • Street Price</p>
-        <div style="margin-top: 20px; font-size: 0.8rem; opacity: 0.6;">
-            &copy; 2025 Café Near Me. All rights reserved.
-        </div>
+        <p>Santoshpur, Kolkata | The Brownish Aesthetic</p>
+        <a href="https://wa.me/message/YOPYLKGEOX24I1" class="wa-btn" style="display:inline-block; margin-top:30px;">
+            <i class="fab fa-whatsapp"></i> CHAT & ORDER
+        </a>
     </footer>
 
+    <script>
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal();
+    </script>
 </body>
 </html>
