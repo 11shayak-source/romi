@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Café Near Me | Retro-Gourmet Revolution</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Montserrat:wght@300;400;700&family=Bungee+Shade&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --vintage-cream: #FDF5E6;
+            --deep-walnut: #3D2B1F;
+            --retro-gold: #D4AF37;
+            --neon-accent: #FF5E5E;
+            --bakery-pink: #F4DADA;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        
+        body { 
+            font-family: 'Montserrat', sans-serif; 
+            margin: 0; 
+            background: var(--vintage-cream); 
+            color: var(--deep-walnut); 
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- Transitions & Animations --- */
+        .reveal { opacity: 0; transform: translateY(30px); transition: var(--transition); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* --- Navigation --- */
+        nav { 
+            background: rgba(61, 43, 31, 0.95); 
+            backdrop-filter: blur(10px);
+            color: white; 
+            padding: 1rem 8%; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000;
+            border-bottom: 3px solid var(--retro-gold);
+        }
+        .logo { font-family: 'Bungee Shade', cursive; font-size: 1.8rem; color: var(--retro-gold); letter-spacing: 2px; }
+        .wa-btn { background: #25D366; color: white; padding: 10px 20px; border-radius: 4px; text-decoration: none; font-weight: bold; transition: var(--transition); border: 2px solid transparent; }
+        .wa-btn:hover { background: transparent; border-color: #25D366; color: #25D366; }
+
+        /* --- Hero Section --- */
+        header {
+            height: 90vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1517433670267-08bbd4be890f?auto=format&fit=crop&w=1500&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+        }
+
+        header h1 { 
+            font-family: 'Playfair Display', serif; 
+            font-size: clamp(3rem, 10vw, 6rem); 
+            margin: 0; 
+            text-shadow: 4px 4px var(--deep-walnut);
+        }
+
+        .hero-sub { font-size: 1.5rem; margin: 20px 0; max-width: 800px; font-weight: 300; }
+        .price-sticker { 
+            background: var(--neon-accent); 
+            padding: 15px 40px; 
+            font-size: 2rem; 
+            font-weight: 900; 
+            transform: rotate(-3deg); 
+            box-shadow: 5px 5px 0 var(--deep-walnut);
+            border: 2px solid white;
+        }
+
+        /* --- Sections --- */
+        section { padding: 100px 10%; }
+        h2 { font-family: 'Playfair Display', serif; font-size: 3rem; text-align: center; margin-bottom: 60px; color: var(--deep-walnut); }
+
+        /* --- The Masterminds --- */
+        .founders-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
+        .card { 
+            background: white; 
+            padding: 40px; 
+            border: 1px solid #ddd;
+            position: relative;
+            transition: var(--transition);
+            box-shadow: 15px 15px 0 var(--bakery-pink);
+        }
+        .card:hover { transform: translate(-5px, -5px); box-shadow: 25px 25px 0 var(--retro-gold); }
+        .card h3 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 10px; border-bottom: 2px solid var(--retro-gold); display: inline-block; }
+        .role { color: var(--neon-accent); font-weight: bold; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 15px; }
+
+        /* --- Retro Menu --- */
+        .menu-board { 
+            background: var(--deep-walnut); 
+            color: var(--vintage-cream); 
+            padding: 60px; 
+            border-radius: 10px;
+            box-shadow: inset 0 0 100px rgba(0,0,0,0.5);
+            border: 8px double var(--retro-gold);
+        }
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; }
+        .menu-item { border-bottom: 1px dashed rgba(253, 245, 230, 0.3); padding-bottom: 20px; transition: var(--transition); }
+        .menu-item:hover { transform: scale(1.02); }
+        .menu-item h4 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--retro-gold); margin: 0; }
+        .menu-item p { font-size: 0.9rem; font-style: italic; opacity: 0.8; }
+        
+        /* New Highlight Style for Brownies */
+        .new-arrival { 
+            border: 1px solid var(--retro-gold); 
+            padding: 15px; 
+            background: rgba(212, 175, 55, 0.1); 
+            position: relative;
+        }
+        .badge { 
+            position: absolute; 
+            top: -10px; 
+            right: -10px; 
+            background: var(--neon-accent); 
+            color: white; 
+            font-size: 0.7rem; 
+            padding: 2px 8px; 
+            font-weight: bold; 
+            transform: rotate(15deg); 
+        }
+
+        .coming-soon-text { 
+            text-align: center; 
+            margin-top: 50px; 
+            font-family: 'Playfair Display', serif; 
+            font-style: italic; 
+            color: var(--retro-gold); 
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+        }
+
+        /* --- Footer --- */
+        footer { background: var(--deep-walnut); color: white; text-align: center; padding: 80px 10%; }
+        .footer-logo { font-family: 'Bungee Shade', cursive; font-size: 2.5rem; margin-bottom: 20px; color: var(--retro-gold); }
+
+        @media (max-width: 768px) {
+            section { padding: 60px 5%; }
+            .menu-board { padding: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">CNM</div>
+        <a href="https://wa.me/message/YOPYLKGEOX24I1" class="wa-btn"><i class="fab fa-whatsapp"></i> ORDER NOW</a>
+    </nav>
+
+    <header>
+        <h1 class="reveal">CAFÉ NEAR ME</h1>
+        <p class="hero-sub reveal">Santoshpur's Gourmet Revolution. High-end taste, neighborhood prices.</p>
+        <div class="price-sticker reveal">₹99 — ₹199</div>
+    </header>
+
+    <section id="artisans">
+        <h2 class="reveal">The Artisans</h2>
+        <div class="founders-container">
+            <div class="card reveal">
+                <span class="role">Chef & Digital Strategist</span>
+                <h3>Shayak Kumar Das</h3>
+                <p>A powerhouse of culinary precision. Shayak honed his craft in the prestigious kitchens of <strong>Hyatt</strong>, <strong>Krystal School of Excellence</strong>, and <strong>Wise Owl</strong>. He combines professional hospitality standards with the digital expertise used to scale brands like <strong>AstroTalk</strong> and <strong>Habibs</strong>.</p>
+            </div>
+
+            <div class="card reveal">
+                <span class="role">Professional Baker</span>
+                <h3>Aindrila Chakraborty</h3>
+                <p>The architect of our signature textures. Aindrila is a professional pastry expert who transforms premium ingredients into artisanal masterpieces. From 24-hour fermented doughs to world-class desserts, she ensures every bite is a gourmet experience.</p>
+            </div>
+        </div>
+    </section>
+
+    <section style="background: var(--bakery-pink);">
+        <h2 class="reveal">The Menu Board</h2>
+        <div class="menu-board reveal">
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <h4>Artisanal Sandwiches</h4>
+                    <p>Using Aindrila's 24-hour fermented bread.</p>
+                </div>
+                <div class="menu-item">
+                    <h4>French Burgers</h4>
+                    <p>Chef Shayak’s signature fusion patties.</p>
+                </div>
+                <div class="menu-item">
+                    <h4>Gourmet Alur Dom</h4>
+                    <p>A heritage classic with a Hyatt-style plating.</p>
+                </div>
+                <div class="menu-item">
+                    <h4>Signature Lattes</h4>
+                    <p>Barista-grade beans, street-grade prices.</p>
+                </div>
+                <div class="menu-item new-arrival">
+                    <div class="badge">MUST TRY</div>
+                    <h4>Signature Brownies</h4>
+                    <p>Rich, fudgy, and decadent. Like never tasted before.</p>
+                </div>
+            </div>
+            <div class="coming-soon-text">
+                <i class="fas fa-ellipsis-h"></i> MANY MORE MENUS COMING SOON <i class="fas fa-ellipsis-h"></i>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-logo">CAFÉ NEAR ME</div>
+        <p>A Shayak & Aindrila Venture</p>
+        <p>Santoshpur, Kolkata | The Brownish Aesthetic</p>
+        <a href="https://wa.me/message/YOPYLKGEOX24I1" class="wa-btn" style="display:inline-block; margin-top:30px;">
+            <i class="fab fa-whatsapp"></i> CHAT & ORDER
+        </a>
+    </footer>
+
+    <script>
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal();
+    </script>
+</body>
+</html>
