@@ -36,8 +36,6 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 16px;
             position: sticky;
             top: 0;
             z-index: 999;
@@ -49,16 +47,11 @@
             color: #D4AF37;
         }
 
-        .nav-links {
-            display: flex;
-            gap: 24px;
-            flex-wrap: wrap;
-        }
-
         .nav-links a {
             color: #fff;
             text-decoration: none;
             font-weight: 600;
+            margin-left: 24px;
             cursor: pointer;
         }
 
@@ -74,11 +67,6 @@
         header h1 {
             font-size: 3.5rem;
             margin-bottom: 10px;
-        }
-
-        header p {
-            font-size: 1.2rem;
-            max-width: 700px;
         }
 
         section {
@@ -101,22 +89,24 @@
         .card {
             background: #fff;
             padding: 40px;
-            box-shadow: 10px 10px 0 #F4DADA;
+            border-radius: 18px;
+            box-shadow: 0 20px 50px rgba(0,0,0,.12);
         }
 
-        .menu-image {
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 30px; 
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 40px;
         }
 
-        .menu-image img {
-            width: 100%;
-            max-width: 60%;
-            height: auto;
-            border: 8px solid #3D2B1F;
+        .menu-grid h3 {
+            font-family: 'Playfair Display', serif;
+            color: #D4AF37;
+        }
+
+        .menu-grid ul {
+            padding-left: 18px;
+            line-height: 2;
         }
 
         .wa-btn {
@@ -135,24 +125,6 @@
             color: #fff;
             padding: 60px 8%;
             text-align: center;
-        }
-
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2.4rem;
-            }
-
-            section {
-                padding: 60px 6%;
-            }
-
-            .menu-image img {
-                max-width: 90%;
-            }
-
-            .nav-links {
-                justify-content: center;
-            }
         }
     </style>
 </head>
@@ -190,12 +162,125 @@
 </section>
 
 <section id="menu">
-    <h2>Our Complete Menu</h2>
-    <div class="menu-image">
-        <img src="assets/images/menu.png" alt="Cafe Near Me Menu Kolkata Page 1">
-        
-        <img src="assets/images/img%202.png" alt="Cafe Near Me Menu - Tub Cakes and Sugar Free Specials">
+    <h2>[ MENU ]</h2>
+
+    <div class="menu-grid">
+
+        <div class="card">
+            <h3>Tub Cakes (114 g) – Regular</h3>
+            <ul>
+                <li>Vanilla — ₹85</li>
+                <li>Chocolate — ₹99</li>
+                <li>Butterscotch — ₹95</li>
+                <li>Nolen Gur — ₹105</li>
+                <li>Biscoff — ₹125</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Cheesecakes (144 g) – With Sugar</h3>
+            <ul>
+                <li>Vanilla — ₹135</li>
+                <li>Chocolate — ₹145</li>
+                <li>Butterscotch — ₹145</li>
+                <li>Biscoff — ₹155</li>
+                <li>Nolen Gur — ₹155</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Sugar-Free Items</h3>
+            <ul>
+                <li>Sugar-Free Brownie — ₹50</li>
+                <li>Sugar-Free Blueberry Cheesecake — ₹175</li>
+                <li>Sugar-Free Butterscotch Cheesecake — ₹195</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>No Added Sugar – Tub Cakes (114 g)</h3>
+            <ul>
+                <li>Vanilla — ₹125</li>
+                <li>Chocolate — ₹139</li>
+                <li>Butterscotch — ₹135</li>
+                <li>Biscoff — ₹145</li>
+                <li>Nolen Gur — ₹145</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>No Added Sugar – Cheesecakes (144 g)</h3>
+            <ul>
+                <li>Vanilla — ₹175</li>
+                <li>Chocolate — ₹185</li>
+                <li>Butterscotch — ₹195</li>
+                <li>Biscoff — ₹195</li>
+                <li>Nolen Gur — ₹205</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>One Pound Cakes</h3>
+            <ul>
+                <li>Strawberry — ₹289</li>
+                <li>Orange — ₹289</li>
+                <li>Blueberry — ₹309</li>
+                <li>Vanilla Birthday — ₹249</li>
+                <li>Chocolate Birthday — ₹299</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Cakes & Desserts</h3>
+            <ul>
+                <li>Brownie (1 Pc) — ₹30</li>
+                <li>Burger Cake — ₹99</li>
+                <li>Plain Butter Cake — ₹199</li>
+                <li>Plain Butter Cake Slice — ₹20</li>
+                <li>Chocolate Sponge Cake — ₹259</li>
+                <li>Chocolate Sponge Slice — ₹30</li>
+                <li>Pastry — ₹25</li>
+                <li>Chocolate Pastry — ₹35</li>
+                <li>Tub Cake — ₹199</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Waffles (Sweet & Crispy)</h3>
+            <ul>
+                <li>Chocolate — ₹150</li>
+                <li>Nutella — ₹180</li>
+                <li>White Chocolate — ₹190</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Breakfast Treats</h3>
+            <ul>
+                <li>Club Sandwich — ₹79</li>
+                <li>Veg Sandwich — ₹69</li>
+                <li>Non-Veg Burger — ₹89</li>
+                <li>Veg Burger — ₹69</li>
+                <li>Koraishutir Kochuri (2 Pc + Alurdom) — ₹35</li>
+                <li>4 Pc Luchi + Shada Alur Torkari — ₹35</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>CNM Special Meals</h3>
+            <ul>
+                <li>Rice + Dal + Mix Sabji + 1 Roti — ₹99</li>
+                <li>Rice + Dal + Egg Curry — ₹99</li>
+                <li>Rice + Dal + Chicken Curry (2 Pc) — ₹130</li>
+                <li>Khichuri + Aloor Dom + Egg Fry — ₹150</li>
+            </ul>
+        </div>
+
     </div>
+
+    <p style="text-align:center;margin-top:40px;">
+        Custom Birthday Cakes Available · All Prices in INR
+    </p>
 </section>
 
 <section id="bulk">
@@ -219,10 +304,7 @@
 <script>
 function scrollToSection(id) {
     const section = document.getElementById(id);
-    if (!section) return;
-
     const navHeight = document.querySelector('nav').offsetHeight;
-
     window.scrollTo({
         top: section.offsetTop - navHeight,
         behavior: 'smooth'
