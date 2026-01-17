@@ -49,7 +49,7 @@
         nav {
             background: rgba(43, 29, 26, 0.95);
             backdrop-filter: blur(10px);
-            padding: 10px 8%;
+            padding: 15px 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -60,14 +60,16 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        .logo img {
-            height: 65px;
-            width: auto;
-            display: block;
-            transition: transform 0.3s ease;
+        /* Bold Yellow Text Logo */
+        .text-logo {
+            color: var(--gold);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            text-decoration: none;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
-
-        .logo img:hover { transform: scale(1.05); }
 
         .nav-links a {
             color: var(--gold);
@@ -94,7 +96,7 @@
                 url('https://images.unsplash.com/photo-1517433670267-08bbd4be890f?auto=format&fit=crop&w=1500&q=80') center/cover fixed;
         }
 
-        h1 { font-family: 'Playfair Display', serif; font-size: 4rem; color: var(--gold); margin-bottom: 20px; }
+        h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 6vw, 4rem); color: var(--gold); margin-bottom: 20px; }
 
         .cta-btn {
             padding: 15px 40px;
@@ -105,6 +107,7 @@
             border-radius: 50px;
             transition: 0.3s;
             text-transform: uppercase;
+            cursor: pointer;
         }
 
         section { padding: 100px 8%; }
@@ -139,19 +142,22 @@
         .user-msg { background: var(--gold); color: #000; padding: 10px; border-radius: 10px; align-self: flex-end; }
         .chat-input { display: flex; padding: 10px; background: #2b1d1a; }
         .chat-input input { flex: 1; background: transparent; border: none; color: white; outline: none; }
+        
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            h1 { font-size: 2.5rem; }
+        }
     </style>
 </head>
 <body>
 
 <nav>
-    <div class="logo">
-        <img src="https://raw.githubusercontent.com/11shayak-source/main/assets/images/CNM_4K_1to1.png" alt="CNM Logo">
-    </div>
+    <a href="#" class="text-logo">CAFÉ NEAR ME</a>
     <div class="nav-links">
         <a onclick="scrollToSection('menu')">Menu Collection</a>
         <a onclick="scrollToSection('bulk')">Corporate & Bulk</a>
         <a onclick="scrollToSection('founders')">Founders</a>
-        <a href="https://wa.me/919477576785" class="cta-btn" style="padding: 8px 20px; font-size: 0.7rem; margin-left:20px;">Order Now</a>
+        <a href="https://wa.me/919477576785" class="cta-btn" style="padding: 8px 20px; font-size: 0.7rem; margin-left:20px; background: var(--gold); color: black;">Order Now</a>
     </div>
 </nav>
 
@@ -309,7 +315,7 @@
 </section>
 
 <footer>
-    <h3>CAFÉ NEAR ME</h3>
+    <h3 style="color:var(--gold); font-family:'Playfair Display'; font-size: 2rem;">CAFÉ NEAR ME</h3>
     <p>Santoshpur, Kolkata | Shayak & Aindrila</p>
 </footer>
 
@@ -317,7 +323,7 @@
     <div id="chat-box">
         <div class="chat-header"><span>ChocoBot AI</span><span onclick="toggleChat()">×</span></div>
         <div class="chat-messages" id="msgs"></div>
-        <div class="chat-input"><input type="text" id="in" onkeypress="if(event.key=='Enter') send()"><button onclick="send()">Go</button></div>
+        <div class="chat-input"><input type="text" id="in" onkeypress="if(event.key=='Enter') send()"><button onclick="send()" style="background:var(--gold); border:none; padding:5px 10px; cursor:pointer;">Go</button></div>
     </div>
     <div id="chat-toggle" onclick="toggleChat()"><i class="fas fa-robot"></i></div>
 </div>
